@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MENU UTAMA PREMIUM</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+:root{
+  --cyan:#00f7ff;
+  --blue:#2563eb;
+  --purple:#7c3aed;
+  --green:#22c55e;
+  --gold:#facc15;
+  --white:#ffffff;
+}
+
+/* BODY */
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:#020617;
+  position:relative;
+  color:white;
+}
+
+/* PREMIUM BACKGROUND */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(
+      rgba(2,6,23,.20),
+      rgba(2,6,23,.65)
+    ),
+    url("https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=3840&auto=format&fit=crop")
+    center/cover no-repeat;
+  filter:brightness(1.45) contrast(1.25) saturate(1.6);
+  animation:bgMove 22s ease-in-out infinite alternate;
+  z-index:-20;
+}
+
+@keyframes bgMove{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.13);
+  }
+}
+
+/* PREMIUM LIGHTING */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(0,247,255,.65),transparent 28%),
+    radial-gradient(circle at 15% 20%,rgba(37,99,235,.55),transparent 35%),
+    radial-gradient(circle at 85% 15%,rgba(124,58,237,.55),transparent 35%),
+    radial-gradient(circle at 50% 100%,rgba(0,247,255,.25),transparent 45%);
+  z-index:-19;
+}
+
+/* ANIMATED GRID */
+
+.grid{
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,247,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,247,255,.08) 1px, transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,transparent,black 25%,black 70%,transparent);
+  animation:gridMove 18s linear infinite;
+  z-index:-18;
+}
+
+@keyframes gridMove{
+  from{
+    transform:translateY(0);
+  }
+  to{
+    transform:translateY(-120px);
+  }
+}
+
+/* PARTICLE */
+
+.particles{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  z-index:-15;
+}
+
+.particles span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:var(--cyan);
+  border-radius:50%;
+  opacity:.8;
+  box-shadow:
+    0 0 10px var(--cyan),
+    0 0 25px var(--cyan),
+    0 0 45px var(--cyan);
+  animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+  from{
+    transform:translateY(0) scale(.2);
+    opacity:0;
+  }
+  15%{
+    opacity:1;
+  }
+  to{
+    transform:translateY(-120vh) scale(1.2);
+    opacity:0;
+  }
+}
+
+/* CARD */
+
+.menu-box{
+  width:92%;
+  max-width:470px;
+  padding:42px 30px 35px;
+  border-radius:34px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.18),
+      rgba(0,35,80,.18)
+    );
+
+  backdrop-filter:blur(26px);
+  -webkit-backdrop-filter:blur(26px);
+
+  border:1px solid rgba(255,255,255,.25);
+
+  box-shadow:
+    0 0 35px rgba(0,247,255,.75),
+    0 0 85px rgba(37,99,235,.45),
+    inset 0 0 35px rgba(255,255,255,.08);
+
+  animation:floating 4s ease-in-out infinite;
+}
+
+.menu-box::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(0,247,255,.8),
+      transparent,
+      rgba(250,204,21,.65),
+      transparent
+    );
+  background-size:300%;
+  animation:borderGlow 6s linear infinite;
+  z-index:-2;
+}
+
+.menu-box::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:33px;
+  background:rgba(2,6,23,.45);
+  z-index:-1;
+}
+
+@keyframes borderGlow{
+  to{
+    background-position:300%;
+  }
+}
+
+@keyframes floating{
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* TOP BADGE */
+
+.badge{
+  display:inline-block;
+  padding:8px 18px;
+  margin-bottom:18px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#001018;
+  background:linear-gradient(90deg,#fff,var(--cyan),#fff);
+  box-shadow:
+    0 0 18px rgba(0,247,255,.9),
+    0 0 35px rgba(0,247,255,.5);
+}
+
+/* LOGO */
+
+.logo{
+  font-size:78px;
+  margin-bottom:8px;
+  filter:
+    drop-shadow(0 0 18px var(--cyan))
+    drop-shadow(0 0 35px rgba(0,247,255,.8));
+  animation:logoPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes logoPulse{
+  50%{
+    transform:scale(1.08) rotate(2deg);
+  }
+}
+
+/* TITLE */
+
+h2{
+  font-size:30px;
+  font-weight:950;
+  letter-spacing:2px;
+  background:linear-gradient(90deg,#fff,var(--cyan),#facc15,#fff);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:titleMove 5s linear infinite;
+  text-shadow:0 0 35px rgba(0,247,255,.4);
+}
+
+@keyframes titleMove{
+  to{
+    background-position:300%;
+  }
+}
+
+.subtitle{
+  margin-top:12px;
+  margin-bottom:30px;
+  font-size:13px;
+  letter-spacing:3px;
+  color:#dbeafe;
+  text-transform:uppercase;
+  opacity:.95;
+}
+
+/* MENU LINK */
+
+.menu-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+
+  text-decoration:none;
+  color:white;
+
+  padding:17px 18px;
+  margin:15px 0;
+
+  font-size:17px;
+  font-weight:900;
+  letter-spacing:.8px;
+
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,.20);
+
+  transition:.35s ease;
+}
+
+.menu-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:15px;
+  font-size:22px;
+  background:rgba(255,255,255,.16);
+  box-shadow:inset 0 0 15px rgba(255,255,255,.12);
+}
+
+.arrow{
+  font-size:20px;
+  opacity:.8;
+  transition:.35s ease;
+}
+
+.menu-link:hover{
+  transform:translateY(-5px) scale(1.025);
+  filter:brightness(1.15);
+}
+
+.menu-link:hover .arrow{
+  transform:translateX(6px);
+  opacity:1;
+}
+
+.menu-link::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:75%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.42),
+    transparent
+  );
+  transform:skewX(-25deg);
+}
+
+.menu-link:hover::before{
+  animation:shine .8s forwards;
+}
+
+@keyframes shine{
+  to{
+    left:180%;
+  }
+}
+
+/* BUTTON COLORS */
+
+.bola{
+  background:
+    linear-gradient(135deg,#047857,#22c55e,#86efac);
+  box-shadow:
+    0 0 22px rgba(34,197,94,.65),
+    inset 0 0 18px rgba(255,255,255,.12);
+}
+
+.jarvis{
+  background:
+    linear-gradient(135deg,#1d4ed8,#7c3aed,#06b6d4);
+  box-shadow:
+    0 0 22px rgba(0,247,255,.55),
+    inset 0 0 18px rgba(255,255,255,.12);
+}
+
+.gold{
+  background:
+    linear-gradient(135deg,#92400e,#facc15,#f97316);
+  box-shadow:
+    0 0 22px rgba(250,204,21,.55),
+    inset 0 0 18px rgba(255,255,255,.12);
+}
+
+.bca{
+  background:
+    linear-gradient(135deg,#075985,#2563eb,#38bdf8);
+  box-shadow:
+    0 0 22px rgba(56,189,248,.55),
+    inset 0 0 18px rgba(255,255,255,.12);
+}
+
+.bni{
+  background:
+    linear-gradient(135deg,#7c2d12,#f97316,#facc15);
+  box-shadow:
+    0 0 22px rgba(249,115,22,.55),
+    inset 0 0 18px rgba(255,255,255,.12);
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.16);
+  font-size:12px;
+  letter-spacing:7px;
+  color:#e0f2fe;
+  text-shadow:0 0 18px var(--cyan);
+}
+
+/* LOADER */
+
+#loader{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at center,rgba(0,247,255,.22),transparent 35%),
+    #020617;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+
+  z-index:9999;
+  transition:.9s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-logo{
+  font-size:95px;
+  animation:pulse 1.5s infinite;
+  filter:drop-shadow(0 0 30px var(--cyan));
+}
+
+.loader-text{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:5px;
+  color:var(--cyan);
+  text-shadow:0 0 20px var(--cyan);
+}
+
+.loader-line{
+  width:180px;
+  height:5px;
+  margin-top:20px;
+  border-radius:99px;
+  background:rgba(255,255,255,.15);
+  overflow:hidden;
+}
+
+.loader-line span{
+  display:block;
+  width:45%;
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan),#fff,var(--cyan));
+  animation:loadingLine 1.2s ease-in-out infinite;
+}
+
+@keyframes loadingLine{
+  from{
+    transform:translateX(-100%);
+  }
+  to{
+    transform:translateX(260%);
+  }
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.2);
+  }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:480px){
+  .menu-box{
+    padding:34px 20px 28px;
+    border-radius:28px;
+  }
+
+  h2{
+    font-size:24px;
+  }
+
+  .logo{
+    font-size:64px;
+  }
+
+  .menu-link{
+    font-size:14.5px;
+    padding:14px;
+  }
+
+  .icon{
+    width:38px;
+    height:38px;
+    font-size:20px;
+  }
+
+  .footer{
+    letter-spacing:5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <div class="loader-logo">💎</div>
+  <div class="loader-text">JARVIS SYSTEM</div>
+  <div class="loader-line"><span></span></div>
+</div>
+
+<div class="grid"></div>
+<div class="particles"></div>
+
+<div class="menu-box">
+
+  <div class="badge">J.A.R.V.I.S</div>
+
+  <div class="logo">💎</div>
+
+  <h1>⚡ SELAMAT DATANG ⚡</h1>
+
+  <div class="subtitle">
+    Pilih menu utama Anda
+  </div>
+
+  <a class="menu-link bola"
+  href="https://jarviss1998.github.io/BOLA/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">⚽</span>
+      <span>INFO BOLA</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <a class="menu-link bola"
+  href="https://jarviss1998.github.io/KALKULATORBOLA/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">⚽</span>
+      <span>KALKULATOR BOLA</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <a class="menu-link jarvis"
+  href="https://jarviss1998.github.io/JARVIS/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">🀄</span>
+      <span>MAHJONG WAYS 1 & 2</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <a class="menu-link gold"
+  href="https://jarviss1998.github.io/GENERATOR/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">⭐</span>
+      <span>GENERATOR</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <a class="menu-link bca"
+  href="https://jarviss1998.github.io/BCA/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">💰</span>
+      <span>STRUK BCA</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <a class="menu-link bni"
+  href="https://jarviss1998.github.io/BNII/"
+  target="_blank">
+    <span class="menu-left">
+      <span class="icon">💰</span>
+      <span>STRUK BNI</span>
+    </span>
+    <span class="arrow">➜</span>
+  </a>
+
+  <div class="footer">
+    JARVIS
+  </div>
+
+</div>
+
+<script>
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hide");
+  },1500);
+});
+
+const particles = document.querySelector(".particles");
+
+for(let i = 0; i < 120; i++){
+  const span = document.createElement("span");
+
+  span.style.left = Math.random() * 100 + "%";
+  span.style.bottom = "-20px";
+  span.style.animationDelay = Math.random() * 10 + "s";
+  span.style.animationDuration = (8 + Math.random() * 12) + "s";
+  span.style.opacity = Math.random();
+
+  particles.appendChild(span);
+}
+</script>
+
+</body>
+</html>
